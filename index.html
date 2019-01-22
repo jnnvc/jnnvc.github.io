@@ -6,7 +6,7 @@
     <title>Java网站导航</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="keywords" content="Java网站导航，Java常用工具">
-	<link rel="icon" href="https://avatars1.githubusercontent.com/u/38550226?s=40&v=4" sizes="32x32">
+    <link rel="icon" href="https://avatars1.githubusercontent.com/u/38550226?s=40&v=4" sizes="32x32">
     <link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -16,7 +16,7 @@
 
 </style>
 <body>
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-default" role="navigation">
             <div class="pull-left">
@@ -29,17 +29,32 @@
     </div>
 
     <div class="row">
+        <form action="https://www.baidu.com/s?ie=UTF-8" method="get" target="_blank" >
         <div class="input-group input-group-lg" style="padding:0 15px">
-            <span class="input-group-addon">百度</span>
-            <input type="text" class="form-control">
+
+            <span class="input-group-addon ">百度</span>
+            <input type="text" class="form-control" name="wd">
             <span class="input-group-btn">
-						<button class="btn btn-default" type="button">
+						<button class="btn btn-default" type="submit">
 							Go!
 						</button>
 					</span>
+
         </div><!-- /input-group -->
+        </form>
     </div><br>
     <div class="row">
+        <div class="col-md-2">
+            <a href="#" class="list-group-item active">公告</a>
+            <a href="#" class="list-group-item">SpringCould</a>
+            <a href="#" class="list-group-item">SpringBoot</a>
+            <a href="#" class="list-group-item">WebMagic</a>
+            <a href="#" class="list-group-item">空指针</a>
+            <a href="#" class="list-group-item">免费 Window 空间托管</a>
+            <a href="#" class="list-group-item">图像的数量</a>
+            <a href="#" class="list-group-item">每年更新成本</a>
+            <a href="#" class="list-group-item">24*7 支持</a>
+        </div>
         <div class="col-md-8">
             <ul class="nav nav-pills">
                 <li class="active"><a href="#">常用</a></li>
@@ -92,8 +107,21 @@
 
 
             </ul><br>
+            <ul class="nav nav-pills">
+                <li class="active"><a href="#">它其</a></li>
+                <li><a href="#">百度网盘</a></li>
+                <li><a href="#">腾讯微云</a></li>
+                <li><a href="#">QQ邮箱</a></li>
+                <li><a href="#">163邮箱</a></li>
+                <li><a href="#">智联招聘</a></li>
+                <li><a href="#">前程无忧</a></li>
+                <li><a href="#">拉勾网</a></li>
+
+
+            </ul><br>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-2">
             <a href="#" class="list-group-item active">推荐博客</a>
             <a href="#" class="list-group-item">SpringCould</a>
             <a href="#" class="list-group-item">SpringBoot</a>
