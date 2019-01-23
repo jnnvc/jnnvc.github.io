@@ -1,0 +1,55 @@
+
+<!DOCTYPE HTML>
+
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+
+  <title>JSON Editor Online - view, edit and format JSON online</title>
+
+  <meta name="description" content="JSON Editor Online is a web-based tool to view, edit, and format JSON. It shows your data side by side in a clear, editable treeview and in a code editor.">
+  <meta name="keywords" content="json, editor, formatter, online, format, parser, json editor, json editor online, online json editor, javascript, javascript object notation, tools, tool, json tools, treeview, open source, free, json parser, json parser online, json formatter, json formatter online, online json formatter, online json parser, format json online">
+  <meta name="author" content="Jos de Jong">
+  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="stylesheet" type="text/css" href="http://jsoneditoronline.org/app.min.css">
+  <script type="text/javascript" src="http://jsoneditoronline.org/app.min.js" charset="utf-8"></script>
+  <script data-cfasync="false" type="text/javascript">
+    var debug = window.location.search.indexOf('fsdebug') == -1 ? false : true;
+    var freestar = freestar || {};
+    freestar.hitTime = Date.now();
+    freestar.queue = freestar.queue || [];
+    freestar.config = freestar.config || {};
+
+    // Tag IDs set here, must match Tags served in the Body for proper setup
+    freestar.config.enabled_slots = [
+      "jsoneditoronline_300x600_160x600_300x250_ATF"
+    ];
+
+    //!function(a,b){var c=b.getElementsByTagName("script")[0],d=b.createElement("script"),e="https://a.pub.network/jsoneditoronline";e+=debug?"/qa/pubfig.min.js":"/pubfig.min.js",d.async=!0,d.src=e,c.parentNode.insertBefore(d,c)}(window,document);
+  </script>
+  <style >
+        .error,.jsoneditor-poweredBy,.jsoneditor-repair{
+            display:none;
+        }
+		#codeEditor{
+			width:100%;
+			padding:0px;
+			margin:0px;
+		}
+    </style>
+</head>
+
+
+<body>
+	<div id="codeEditor"></div>
+		<div id="ad">
+		  <div align="center" id="jsoneditoronline_300x600_160x600_300x250_ATF">
+		  </div>
+	  </div>
+	</div>
+</body>
+<script type="text/javascript">
+	app.load();
+    app.resize();
+</script>
+</html>
