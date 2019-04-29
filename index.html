@@ -87,11 +87,11 @@
                 let that = this
                 $.ajax({
                     type: "get",
-                    url: "https://zilongling.github.io/db.json",
+                    url: "https://github.com/jnnvc/jnnvc.github.io/wiki/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%B0%8F%E5%A8%9C",
                     async: true,
-                    dataType: "json",
+                    dataType: "html",
                     success: function (result) {
-                        that.collect = result
+                       aler(result)
                     }
                 });
             }
