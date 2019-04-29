@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -17,25 +18,31 @@
             -webkit-font-smoothing: antialiased;
             -webkit-tap-highlight-color: transparent;
         }
+
         .collect-item {
             padding-bottom: 20px;
         }
+
         .long-title {
             font-size: 24px;
         }
+
         .long-centent {
             font-size: 16px;
             height: 32px;
             color: #606266;
         }
+
         .long-date {
             font-size: 16px;
             color: #909399;
             padding: 10px 0;
         }
+
         [v-cloak] {
             display: none;
         }
+
         .el-card__body {
             height: 90px;
         }
@@ -87,11 +94,11 @@
                 let that = this
                 $.ajax({
                     type: "get",
-                    url: "https://github.com/jnnvc/jnnvc.github.io/wiki/%E4%BD%A0%E5%A5%BD%EF%BC%8C%E5%B0%8F%E5%A8%9C",
+                    url: "https://zilongling.github.io/db.json",
                     async: true,
-                    dataType: "html",
+                    dataType: "json",
                     success: function (result) {
-                       aler(result)
+                        that.collect = result
                     }
                 });
             }
