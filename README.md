@@ -1,2 +1,2 @@
 # jnnvc.github.io
-https://github.jnnvc.com
+https://huanglei.jnnvc.com
