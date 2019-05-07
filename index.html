@@ -10,20 +10,20 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <style type="text/css">
         body,
-        html {
+        html,
+        #app, {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
-            font-weight: 400;
-            -webkit-font-smoothing: antialiased;
-            -webkit-tap-highlight-color: transparent;
+            width: 100%;
         }
+
+
         .collect-item {
             padding-bottom: 20px;
         }
         .long-title {
-            font-size: 20px;
+            font-size: 24px;
         }
         [v-cloak] {
             display: none;
@@ -32,8 +32,22 @@
 </head>
 
 <body>
+    
     <div id="app" v-cloak>
-        <h1 style="text-align: center;font-weight: 700;color: #303133;margin: 0;padding: 15px;">链接收藏夹</h1>
+        <h1 style="text-align: center">链接收藏夹</h1>
+        
+        <!-- <el-header>
+            <el-tag>之龙</el-tag>
+            <el-tag type="success">一点</el-tag>
+            <el-tag type="info">Java</el-tag>
+            <el-tag type="warning">Spring</el-tag>
+            <el-tag type="danger">其他</el-tag>
+        </el-header> -->
+        
+        <el-row class="collect-item"  style="margin:0 auto;text-align: center">
+           <el-button type="primary" v-on:click="loadData(item.titiUrl)" round v-for="(item, index) in titi" :key="item.titiName">{{item.titiName}}</el-button>
+        </el-row>
+
         <el-row>
             <el-col :span="2">
                 &nbsp;
@@ -63,18 +77,33 @@
         el: '#app',
         data: function () {
             return {
-                collect: []
+                collect: [],
+                titi:[
+                {
+                    titiName:'导航',
+                    titiUrl:"https://huanglei.jnnvc.com/data/dh.json"
+                },{
+                    titiName:'子龙',
+                    titiUrl:"https://zilongling.github.io/db.json"
+                },{
+                    titiName:'一点',
+                    titiUrl:"https://huanglei.jnnvc.com/data/huanglei.json"
+                },{
+                    titiName:'Java',
+                    titiUrl:""
+                }]
             }
+
         },
         mounted: function () {
-            this.loadData()
+            this.loadData("https://zilongling.github.io/db.json")
         },
         methods: {
-            loadData: function () {
+            loadData: function (url) {
                 let that = this
                 $.ajax({
                     type: "get",
-                    url: "https://zilongling.github.io/db.json",
+                    url: url,
                     async: true,
                     dataType: "json",
                     success: function (result) {
