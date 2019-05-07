@@ -1,13 +1,11 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>JAVA收藏夹</title>
+    <title>链接收藏夹</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="./img/icon.png" />
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <style type="text/css">
@@ -21,40 +19,21 @@
             -webkit-font-smoothing: antialiased;
             -webkit-tap-highlight-color: transparent;
         }
-
         .collect-item {
             padding-bottom: 20px;
         }
-
         .long-title {
-            font-size: 24px;
+            font-size: 20px;
         }
-
-        .long-centent {
-            font-size: 16px;
-            height: 32px;
-            color: #606266;
-        }
-
-        .long-date {
-            font-size: 16px;
-            color: #909399;
-            padding: 10px 0;
-        }
-
         [v-cloak] {
             display: none;
-        }
-
-        .el-card__body {
-            height: 90px;
         }
     </style>
 </head>
 
 <body>
     <div id="app" v-cloak>
-        <h1 style="text-align: center;font-weight: 700;color: #303133;margin: 0;padding: 15px;">JAVA收藏夹</h1>
+        <h1 style="text-align: center;font-weight: 700;color: #303133;margin: 0;padding: 15px;">链接收藏夹</h1>
         <el-row>
             <el-col :span="2">
                 &nbsp;
@@ -66,8 +45,6 @@
                             <el-link class="long-title" type="primary" target="_blank" :href="item.link">
                                 {{item.title}}
                             </el-link>
-                            <div class="long-centent">{{item.desc}}</div>
-                            <div class="long-date">{{item.createDate}}</div>
                         </el-card>
                     </el-col>
                 </el-row>
@@ -108,6 +85,7 @@
         }
     })
 </script>
+
 <script>
 var _hmt = _hmt || [];
 (function() {
