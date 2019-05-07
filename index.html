@@ -2,7 +2,9 @@
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>链接收藏夹</title>
+    <title>JAVA程序员收藏夹</title>
+    <meta name="Keywords" Content="JAVA,程序员,收藏夹">
+<meta name="Description" Content="收藏着一些有用的东西，常用网站导航页面。">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -34,16 +36,8 @@
 <body>
     
     <div id="app" v-cloak>
-        <h1 style="text-align: center">链接收藏夹</h1>
-        
-        <!-- <el-header>
-            <el-tag>之龙</el-tag>
-            <el-tag type="success">一点</el-tag>
-            <el-tag type="info">Java</el-tag>
-            <el-tag type="warning">Spring</el-tag>
-            <el-tag type="danger">其他</el-tag>
-        </el-header> -->
-        
+        <h1 style="text-align: center">JAVA程序员收藏夹</h1>
+    
         <el-row class="collect-item"  style="margin:0 auto;text-align: center">
            <el-button type="primary" v-on:click="loadData(item.titiUrl)" round v-for="(item, index) in titi" :key="item.titiName">{{item.titiName}}</el-button>
         </el-row>
@@ -53,10 +47,11 @@
                 &nbsp;
             </el-col>
             <el-col :span="20">
-                <el-row :gutter="20">
-                    <el-col :lg="8" :xs="24" v-for="item in collect" :key="item.title" class="collect-item">
-                        <el-card>
-                            <el-link class="long-title" type="primary" target="_blank" :href="item.link">
+                <el-row :gutter="20" >
+                    <!--  -->
+                    <el-col :lg="8" :xs="24" v-for="item in collect" :key="item.title" class="collect-item" >
+                        <el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
+                            <el-link class="long-title" type="primary" target="_blank" >
                                 {{item.title}}
                             </el-link>
                         </el-card>
@@ -110,6 +105,8 @@
                         that.collect = result
                     }
                 });
+            },clickTitle(href){
+                window.open(href, '_blank');
             }
         }
     })
