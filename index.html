@@ -20,8 +20,6 @@
             height: 100%;
             width: 100%;
         }
-
-
         .collect-item {
             padding-bottom: 20px;
         }
@@ -51,7 +49,7 @@
                 <el-row :gutter="20" >
                     <!--  -->
                     <el-col :lg="6" :xs="24" v-for="item in collect" :key="item.title" class="collect-item" >
-                        <el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
+                        <el-card @click.native="clickTitle(item.link)" style="cursor:pointer;" v-loading.fullscreen.lock="fullscreenLoading">
                             <el-link class="long-title" :underline="false" type="primary"  style="height: 15px;"  target="_blank" >
                                 {{item.title}}
 							</el-link>
@@ -74,6 +72,8 @@
         data: function () {
             return {
                 collect: [],
+				fullscreenLoading : false
+				,
                 titi:[
                 {
                     titiName:'导航',
@@ -89,22 +89,26 @@
                     titiUrl:""
                 }]
             }
-
         },
         mounted: function () {
             this.loadData("https://huanglei.jnnvc.com/data/dh.json")
         },
         methods: {
             loadData: function (url) {
-                let that = this
+				
+                let _this = this
+				_this.fullscreenLoading = true;
                 $.ajax({
                     type: "get",
                     url: url,
                     async: true,
                     dataType: "json",
                     success: function (result) {
-                        that.collect = result
-                    }
+                        _this.collect = result
+						_this.fullscreenLoading = false;
+                    },error:function(result){
+						_this.fullscreenLoading = false;
+					}
                 });
             },clickTitle(href){
                 window.open(href, '_blank');
