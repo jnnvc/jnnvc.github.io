@@ -1,33 +1,27 @@
 [
     {
         "title": "CSDN",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://www.csdn.net/"
     },
     {
         "title": "GitHub",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://github.com"
     },
     {
         "title": "菜鸟教程",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://www.runoob.com"
     },
     {
         "title": "博客园",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://www.cnblogs.com/"
     },
     {
         "title": "开源中国",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://www.oschina.net/"
     },
     {
         "title": "码云",
-        "desc": "搭建 vue-cli + webpack 安装配置",
-        "link": "https://blog.csdn.net/princek123/article/details/84067942"
+        "link": "https://gitee.com/"
     }
     
 ]
