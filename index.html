@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 
@@ -62,22 +63,16 @@
 						<el-tabs v-model="activeName" @tab-click="handleClick">
 							<el-tab-pane label="网站导航" name="first">
 								<el-row :gutter="20" >
+                  
 									<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
-										<el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
-											<el-link  class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 10px;"  target="_blank" >
-												
-											</el-link>
-										</el-card>
+                      <el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
 									</el-col>
 								</el-row>
 							</el-tab-pane>
 							<el-tab-pane label="资源推荐" name="second">
 									<el-row :gutter="20" >
 										<el-col :lg="6" :xs="24" v-for="item in zy" :key="item.title" class="collect-item" >
-											<el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
-												<el-link class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 15px;"  target="_blank" >
-													
-												</el-link>
+                        <el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
 											</el-card>
 										</el-col>
 									</el-row>
@@ -148,12 +143,16 @@
 						"link": "https://cyc2018.github.io/CS-Notes/#/README"
 					},
 					{
-						"title": "上阿里学Java",
-						"link": "https://developer.aliyun.com/special/tech-java"
+						"title": "Java学习",
+						"link": "https://edu.aliyun.com/roadmap/java?source=5176.11533457&userCode=p1s8inj4&type=copy"
 					},
 					{
-						"title": "微信公众号",
-						"link": "https://www.runoob.com"
+						"title": "前端学习",
+						"link": "https://edu.aliyun.com/roadmap/frontend?source=5176.11533457&userCode=p1s8inj4&type=copy"
+					},
+					{
+						"title": "Linux运维",
+						"link": "https://edu.aliyun.com/roadmap/linux?source=5176.11533457&userCode=p1s8inj4&type=copy"
 					}
 				]
             }
