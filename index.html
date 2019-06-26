@@ -2,9 +2,8 @@
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
 
 <head>
-    <title>JAVA收藏夹</title>
-    <meta name="Keywords" Content="JAVA,收藏夹">
-<meta name="Description" Content="收藏着一些有用的东西，常用网站导航页面。">
+    <title>程序员学习导航</title>
+	<meta name="Description" Content="程序员收藏着一些有用的东西，常用网站导航页面。">
     <meta charset="utf-8">
     <meta name="baidu-site-verification" content="YDXgQyTaZv" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +13,7 @@
     <style type="text/css">
         body,
         html,
-        #app, {
+        #app{
 			
             margin: 0;
             padding: 0;
@@ -32,113 +31,139 @@
 		border: 5px solid transparent;
 		}
  
-::-webkit-scrollbar-track {
-  box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
-}
- 
-::-webkit-scrollbar-thumb {
-  min-height: 20px;
-  background-clip: content-box;
-  box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
-}
- 
-::-webkit-scrollbar-corner {
-  background: transparent;
-}
-		body{
-			overflow-y:scroll;
+		::-webkit-scrollbar-track {
+		box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
 		}
-
 		
-        .collect-item {
+		::-webkit-scrollbar-thumb {
+		min-height: 20px;
+		background-clip: content-box;
+		box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
+		}
+		
+		::-webkit-scrollbar-corner {
+		background: transparent;
+		}
+		.collect-item {
             padding-bottom: 20px;
         }
         .long-title {
             font-size: 15px;
         }
-        [v-cloak] {
-            display: none;
-        }
-    </style>
+	</style>
 </head>
-
 <body>
-    
     <div id="app" v-cloak>
-        <h1 style="text-align: center">JAVA收藏夹</h1>
-    
-        <el-row class="collect-item"  style="margin:0 auto;text-align: center">
-           <el-button type="primary" v-on:click="loadData(item.titiUrl)" round v-for="(item, index) in titi" :key="item.titiName">{{item.titiName}}</el-button>
-        </el-row>
-
-        <el-row>
-            <el-col :span="2">
-                &nbsp;
-            </el-col>
-            <el-col :span="20">
-                <el-row :gutter="20" >
-                    <!--  -->
-                    <el-col :lg="6" :xs="24" v-for="item in collect" :key="item.title" class="collect-item" >
-                        <el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
-                            <el-link class="long-title" :underline="false" type="primary"  style="height: 15px;"  target="_blank" >
-                                {{item.title}}
-							</el-link>
-                        </el-card>
-                    </el-col>
-                </el-row>
-            </el-col>
-            <el-col :span="2">
-                &nbsp;
-            </el-col>
-        </el-row>
-    </div>
+				<el-row>
+					<el-col :span="2" :xs="1">
+						&nbsp;
+					</el-col>
+					<el-col :span="20" :xs="22">
+						<el-tabs v-model="activeName" @tab-click="handleClick">
+							<el-tab-pane label="网站导航" name="first">
+								<el-row :gutter="20" >
+									<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
+										<el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
+											<el-link class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 15px;"  target="_blank" >
+												
+											</el-link>
+										</el-card>
+									</el-col>
+								</el-row>
+							</el-tab-pane>
+							<el-tab-pane label="资源推荐" name="second">
+									<el-row :gutter="20" >
+										<el-col :lg="6" :xs="24" v-for="item in zy" :key="item.title" class="collect-item" >
+											<el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
+												<el-link class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 15px;"  target="_blank" >
+													
+												</el-link>
+											</el-card>
+										</el-col>
+									</el-row>
+							</el-tab-pane>
+							<el-tab-pane label="文章分享" name="third">
+								
+							</el-tab-pane>
+							<el-tab-pane label="关于" name="fourth">
+								
+							</el-tab-pane>
+					  	</el-tabs>
+						
+					</el-col>
+					<el-col :span="2" :xs="1">
+						&nbsp;
+					</el-col>
+				</el-row>
+		</div>
 </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://unpkg.com/jquery@3.4.0/dist/jquery.min.js"></script>
 <script>
     new Vue({
         el: '#app',
         data: function () {
             return {
-                collect: []
-				,
-                titi:[
-                {
-                    titiName:'导航',
-                    titiUrl:"https://huanglei.jnnvc.com/data/dh.json"
-                },{
-                    titiName:'子龙',
-                    titiUrl:"https://zilongling.github.io/db.json"
-                },{
-                    titiName:'一点',
-                    titiUrl:"https://huanglei.jnnvc.com/data/huanglei.json"
-                },{
-                    titiName:'Java',
-                    titiUrl:""
-                }]
+				activeName:"first",
+				collect:[
+					{
+						"title":"百度",
+						"link":"https://www.baidu.com"
+					},
+					{
+						"title": "CSDN",
+						"link": "https://www.csdn.net/"
+					},
+					{
+						"title": "GitHub",
+						"link": "https://github.com"
+					},
+					{
+						"title": "菜鸟教程",
+						"link": "https://www.runoob.com"
+					},
+					{
+						"title": "博客园",
+						"link": "https://www.cnblogs.com/"
+					},
+					{
+						"title": "码云",
+						"link": "https://gitee.com/"
+					}
+				],
+				zy:[
+					{
+						"title":"Java书籍",
+						"link":"https://www.baidu.com"
+					},
+					{
+						"title": "Java面试手册",
+						"link": "https://www.csdn.net/"
+					},
+					{
+						"title": "上阿里学Java",
+						"link": "https://developer.aliyun.com/special/tech-java"
+					},
+					{
+						"title": "微信公众号",
+						"link": "https://www.runoob.com"
+					},
+					{
+						"title": "不得了",
+						"link": "https://www.cnblogs.com/"
+					},
+					{
+						"title": "九九归一",
+						"link": "https://gitee.com/"
+					}
+				]
             }
         },
         mounted: function () {
-            this.loadData("https://huanglei.jnnvc.com/data/dh.json")
+       
         },
         methods: {
-            loadData: function (url) {
-				this.fullscreenLoading = true;
-                let _this = this
-				
-                $.ajax({
-                    type: "get",
-                    url: url,
-                    async: false,
-                    dataType: "json",
-                    success: function (result) {
-                        _this.collect = result
-                    },error:function(result){
-					
-					}
-                });
-            },clickTitle(href){
+			clickTitle :function(href){
                 window.open(href, '_blank');
             }
         }
