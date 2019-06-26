@@ -64,7 +64,7 @@
 								<el-row :gutter="20" >
 									<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
 										<el-card @click.native="clickTitle(item.link)" style="cursor:pointer;">
-											<el-link class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 15px;"  target="_blank" >
+											<el-link  class="long-title" :underline="false" v-text="item.title" type="primary"  style="height: 10px;"  target="_blank" >
 												
 											</el-link>
 										</el-card>
@@ -81,11 +81,12 @@
 											</el-card>
 										</el-col>
 									</el-row>
+									
 							</el-tab-pane>
-							<el-tab-pane label="文章分享" name="third">
+							<el-tab-pane label="推特" name="third" v-html="tuite">
 								
 							</el-tab-pane>
-							<el-tab-pane label="关于" name="fourth">
+							<el-tab-pane label="关于" v-html="gy" v-on:click = "openGY()" name="fourth">
 								
 							</el-tab-pane>
 					  	</el-tabs>
@@ -99,12 +100,17 @@
 </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://cdn.bootcss.com/marked/0.6.2/marked.js"></script>
+<script src="https://unpkg.com/jquery@3.4.0/dist/jquery.min.js"></script>
 <script>
-    new Vue({
+	let v = new Vue({
         el: '#app',
         data: function () {
             return {
 				activeName:"first",
+				tabPosition2:'right',
+				tuite:marked('# Marked in the browser\n\nRendered by **marked**.'),
+				gy:"",
 				collect:[
 					{
 						"title":"百度",
@@ -131,6 +137,7 @@
 						"link": "https://gitee.com/"
 					}
 				],
+				//type 1 打开链接 type2 显示页面
 				zy:[
 					{
 						"title":"Java书籍",
@@ -138,7 +145,7 @@
 					},
 					{
 						"title": "Java面试手册",
-						"link": "https://www.csdn.net/"
+						"link": "https://cyc2018.github.io/CS-Notes/#/README"
 					},
 					{
 						"title": "上阿里学Java",
@@ -147,14 +154,6 @@
 					{
 						"title": "微信公众号",
 						"link": "https://www.runoob.com"
-					},
-					{
-						"title": "不得了",
-						"link": "https://www.cnblogs.com/"
-					},
-					{
-						"title": "九九归一",
-						"link": "https://gitee.com/"
 					}
 				]
             }
@@ -163,14 +162,30 @@
        
         },
         methods: {
+			handleClick(tab, event){
+				let _this = this;
+				if(tab.name == "fourth"){
+					
+				}
+			},
 			clickTitle :function(href){
                 window.open(href, '_blank');
-            }
+			}
         }
-    })
+	})
+	$.ajax({
+		type: "get",
+		url: "http://www.jnnvc.com/README.md",
+		async: true,
+		dataType: "text",
+		success: function (result) {
+			v.gy = result;
+		}
+	});
 </script>
 
 <script>
+	
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
