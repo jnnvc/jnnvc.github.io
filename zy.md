@@ -24,8 +24,3 @@ QQ交流群：73845661
 
 QQ交流群：没有
 
-```
-public static void main{
-  kasldjfkalsdfj aksdjf kalsdjf klasdjfklasdjfklajsdkflajsdklfjaskldfjkla;sjdfklasjdfkla;sjdfkla;sdjasdfasdfasdfadsfadsfasdfasdfadsfasdfasdfkfkl;asdjf
-}
-```
