@@ -1,49 +1,42 @@
-
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <title>编程导航</title>
-	<meta name="Description" Content="程序员收藏着一些有用的东西，常用网站导航页面。">
+	<meta name="Description" Content="程序员数据收藏中心">
     <meta charset="utf-8">
     <meta name="baidu-site-verification" content="YDXgQyTaZv" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+	<link href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
     <style type="text/css">
-        body,
-        html,
-        #app{
-			
+        body,html,#app{
             margin: 0;
             padding: 0;
             height: 100%;
             width: 100%;
         }
 		::-webkit-scrollbar {
-		width: 15px;
-		height: 15px;
+			width: 15px;
+			height: 15px;
 		}
- 
 		::-webkit-scrollbar-track,
 		::-webkit-scrollbar-thumb {
-		border-radius: 999px;
-		border: 5px solid transparent;
+			border-radius: 999px;
+			border: 5px solid transparent;
 		}
  
 		::-webkit-scrollbar-track {
-		box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
+			box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
 		}
-		
 		::-webkit-scrollbar-thumb {
-		min-height: 20px;
-		background-clip: content-box;
-		box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
+			min-height: 20px;
+			background-clip: content-box;
+			box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
 		}
-		
 		::-webkit-scrollbar-corner {
-		background: transparent;
+			background: transparent;
 		}
 		.collect-item {
             padding-bottom: 20px;
@@ -51,47 +44,43 @@
         .long-title {
             font-size: 15px;
         }
+		.markdown-body {
+			box-sizing: border-box;
+			width: 100%;
+			margin: 0 auto;
+			padding: 0px;
+    	}
+    	@media (max-width: 767px) {
+			.markdown-body {
+				padding: 15px;
+        	}
+    	}
 	</style>
 </head>
 <body>
     <div id="app" v-cloak>
-				<el-row>
-					<el-col :span="2" :xs="1">
-						&nbsp;
-					</el-col>
-					<el-col :span="20" :xs="22">
-						<el-tabs v-model="activeName" @tab-click="handleClick">
-							<el-tab-pane label="网站导航" name="first">
-								<el-row :gutter="20" >
-                  
-									<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
-                      <el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
-									</el-col>
-								</el-row>
-							</el-tab-pane>
-							<el-tab-pane label="资源推荐" name="second">
-									<el-row :gutter="20" >
-										<el-col :lg="6" :xs="24" v-for="item in zy" :key="item.title" class="collect-item" >
-                        <el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
-											</el-card>
-										</el-col>
-									</el-row>
-									
-							</el-tab-pane>
-							<el-tab-pane label="推特" name="third" v-html="tuite">
-								
-							</el-tab-pane>
-							<el-tab-pane label="关于" v-html="gy" v-on:click = "openGY()" name="fourth">
-								
-							</el-tab-pane>
-					  	</el-tabs>
-						
-					</el-col>
-					<el-col :span="2" :xs="1">
-						&nbsp;
-					</el-col>
-				</el-row>
-		</div>
+		<el-row>
+			<el-col :span="2" :xs="1">
+				&nbsp;
+			</el-col>
+			<el-col :span="20" :xs="22">
+				<el-tabs v-model="activeName" @tab-click="handleClick">
+					<el-tab-pane label="网站导航" name="first">
+						<el-row :gutter="20" >
+							<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
+								<el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
+							</el-col>
+						</el-row>
+					</el-tab-pane>
+					<el-tab-pane class="markdown-body" label="资源推荐" v-html="zy" name="second"></el-tab-pane>
+					<el-tab-pane class="markdown-body" label="关于" v-html="gy" name="fourth"></el-tab-pane>
+				</el-tabs>
+			</el-col>
+			<el-col :span="2" :xs="1">
+				&nbsp;
+			</el-col>
+		</el-row>
+	</div>
 </body>
 <script src="https://unpkg.com/vue/dist/vue.js"></script>
 <script src="https://unpkg.com/element-ui/lib/index.js"></script>
@@ -104,8 +93,8 @@
             return {
 				activeName:"first",
 				tabPosition2:'right',
-				tuite:marked('# Marked in the browser\n\nRendered by **marked**.'),
 				gy:"",
+				zy:"",
 				collect:[
 					{
 						"title":"百度",
@@ -130,43 +119,29 @@
 					{
 						"title": "码云",
 						"link": "https://gitee.com/"
-					}
-				],
-				//type 1 打开链接 type2 显示页面
-				zy:[
-					{
-						"title":"Java书籍(密码：h5fn)",
-						"link":"https://pan.baidu.com/s/1E8IbLmEfnppwODTxT3I90g?qq-pf-to=pcqq.group#list/path=%2F"
-					},
-					{
-						"title": "Java面试手册",
-						"link": "https://cyc2018.github.io/CS-Notes/#/README"
-					},
-					{
-						"title": "Java学习",
-						"link": "https://edu.aliyun.com/roadmap/java?source=5176.11533457&userCode=p1s8inj4&type=copy"
-					},
-					{
-						"title": "前端学习",
-						"link": "https://edu.aliyun.com/roadmap/frontend?source=5176.11533457&userCode=p1s8inj4&type=copy"
-					},
-					{
-						"title": "Linux运维",
-						"link": "https://edu.aliyun.com/roadmap/linux?source=5176.11533457&userCode=p1s8inj4&type=copy"
+					},{
+						"title":"慕课网",
+						"link": "https://www.imooc.com/"
+					},{
+						"title":"腾讯课堂",
+						"link": "https://ke.qq.com/"
+					},{
+						"title":"网易课堂",
+						"link": "https://study.163.com/"
+					},{
+						"title":"牛客网",
+						"link": "https://www.nowcoder.com/"
+					},{
+						"title":"掘金",
+						"link": "https://juejin.im"
+					},{
+						"title":"W3Cschool",
+						"link": "https://www.w3cschool.cn"
 					}
 				]
             }
         },
-        mounted: function () {
-       
-        },
         methods: {
-			handleClick(tab, event){
-				let _this = this;
-				if(tab.name == "fourth"){
-					
-				}
-			},
 			clickTitle :function(href){
                 window.open(href, '_blank');
 			}
@@ -174,17 +149,24 @@
 	})
 	$.ajax({
 		type: "get",
-		url: "http://www.jnnvc.com/README.md",
+		url: "https://www.jnnvc.com/zy.md",
 		async: true,
 		dataType: "text",
 		success: function (result) {
-			v.gy = result;
+			v.zy = marked(result);
+		}
+	});
+	$.ajax({
+		type: "get",
+		url: "https://www.jnnvc.com/gy.md",
+		async: true,
+		dataType: "text",
+		success: function (result) {
+			v.gy = marked(result);
 		}
 	});
 </script>
-
 <script>
-	
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
