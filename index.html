@@ -1,5 +1,8 @@
+
+
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <title>编程导航</title>
 	<meta name="Description" Content="程序员收藏着一些有用的东西，常用网站导航页面。">
@@ -48,7 +51,9 @@
 			width: 100%;
 			padding: 0px;
     	}
- 
+		html{
+			overflow-y:scroll
+		}
 	</style>
 </head>
 <body>
@@ -58,7 +63,7 @@
 				&nbsp;
 			</el-col>
 			<el-col :span="20" :xs="22">
-				<el-tabs v-model="activeName" @tab-click="handleClick">
+				<el-tabs v-model="activeName">
 					<el-tab-pane label="网站导航" name="first">
 						<el-row :gutter="20" >
 							<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
@@ -164,7 +169,7 @@
 var _hmt = _hmt || [];
 (function() {
   var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?bb947cf9c7f5f98f16e130331f6bdce5";
+  hm.src = "https://hm.baidu.com/hm.js?f55fc24db918595c8566f5f9d0f56897";
   var s = document.getElementsByTagName("script")[0]; 
   s.parentNode.insertBefore(hm, s);
 })();
