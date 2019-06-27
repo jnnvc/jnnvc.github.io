@@ -23,3 +23,9 @@ QQ交流群：73845661
 [运维学习视频](https://edu.aliyun.com/roadmap/linux?source=5176.11533457&userCode=p1s8inj4&type=copy)
 
 QQ交流群：没有
+
+```
+public static void main{
+  kasldjfkalsdfj aksdjf kalsdjf klasdjfklasdjfklajsdkflajsdklfjaskldfjkla;sjdfklasjdfkla;sjdfkla;sdjasdfasdfasdfadsfadsfasdfasdfadsfasdfasdfkfkl;asdjf
+}
+```
