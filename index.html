@@ -162,9 +162,10 @@
 			}
         }
 	})
+	var i = Date.parse(new Date())
 	$.ajax({
 		type: "get",
-		url: "https://www.jnnvc.com/zy.md",
+		url: "https://www.jnnvc.com/zy.md?i="+i,
 		async: true,
 		dataType: "text",
 		success: function (result) {
@@ -173,7 +174,7 @@
 	});
 	$.ajax({
 		type: "get",
-		url: "https://www.jnnvc.com/gy.md",
+		url: "https://www.jnnvc.com/gy.md?i="+i,
 		async: true,
 		dataType: "text",
 		success: function (result) {
