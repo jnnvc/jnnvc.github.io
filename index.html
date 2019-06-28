@@ -1,16 +1,12 @@
-
-
 <!DOCTYPE html>
 <html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
-
 <head>
     <title>编程导航</title>
 	<meta name="Description" Content="程序员收藏着一些有用的东西，常用网站导航页面。">
     <meta charset="utf-8">
     <meta name="baidu-site-verification" content="YDXgQyTaZv" />
-	
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/38550226?s=40&u=f1f8ae9fc00eeff54377fe0617c0335a92fad690&v=4" >
 	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
 	<link href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css" rel="stylesheet">
@@ -47,7 +43,7 @@
             padding-bottom: 20px;
         }
         .long-title {
-            font-size: 15px;
+			font-size: 15px;
         }
 		.markdown-body {
 			width: 100%;
@@ -68,7 +64,7 @@
 				<el-tabs v-model="activeName">
 					<el-tab-pane label="网站导航" name="first">
 						<el-row :gutter="20" >
-							<el-col :lg="4" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
+							<el-col :lg="4" :md="6" :sm="6" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
 								<el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
 							</el-col>
 						</el-row>
@@ -138,6 +134,24 @@
 					},{
 						"title":"W3Cschool",
 						"link": "https://www.w3cschool.cn"
+					},{
+						"title":"智联招聘",
+						"link": "https://www.zhaopin.com"
+					},{
+						"title":"前程无忧",
+						"link": "https://www.51job.com"
+					},{
+						"title":"拉勾网",
+						"link": "https://www.lagou.com"
+					},{
+						"title":"中华英才",
+						"link": "https://www.chinahr.com/"
+					},{
+						"title":"Boos直聘",
+						"link": "https://www.zhipin.com"
+					},{
+						"title":"LeetCode(面试题)",
+						"link": "https://leetcode-cn.com"
 					}
 				]
             }
