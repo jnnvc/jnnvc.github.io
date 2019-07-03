@@ -68,11 +68,11 @@
 								<el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
 							</el-col>
 						</el-row>
-					</el-tab-pane>
-					<el-tab-pane class="markdown-body" label="资源推荐" v-html="zy" name="second"></el-tab-pane>
-					<el-tab-pane class="markdown-body" label="Java" v-html="zy" name="second"></el-tab-pane>
-					<el-tab-pane class="markdown-body" label="Python" v-html="zy" name="second"></el-tab-pane>
-					<el-tab-pane class="markdown-body" label="前端" v-html="zy" name="second"></el-tab-pane>
+					</el-tab-pane><!--
+					<el-tab-pane class="markdown-body" label="资源推荐" v-html="zy" name="second"></el-tab-pane>-->
+					<el-tab-pane class="markdown-body" label="Java" v-html="javaHtml" name="java"></el-tab-pane>
+					<el-tab-pane class="markdown-body" label="Python" v-html="pythonHtml" name="python"></el-tab-pane>
+					<el-tab-pane class="markdown-body" label="前端" v-html="qdHtml" name="qd"></el-tab-pane>
 					<el-tab-pane class="markdown-body" label="关于" v-html="gy" name="fourth"></el-tab-pane>
 				</el-tabs>
 			</el-col>
@@ -166,6 +166,7 @@
         }
 	})
 	var i = Date.parse(new Date())
+	/**
 	$.ajax({
 		type: "get",
 		url: "https://www.jnnvc.com/zy.md?i="+i,
@@ -174,7 +175,7 @@
 		success: function (result) {
 			v.zy = marked(result);
 		}
-	});
+	});*/
 	$.ajax({
 		type: "get",
 		url: "https://www.jnnvc.com/gy.md?i="+i,
@@ -182,6 +183,34 @@
 		dataType: "text",
 		success: function (result) {
 			v.gy = marked(result);
+		}
+	});
+	$.ajax({
+		type: "get",
+		url: "https://www.jnnvc.com/java.md?i="+i,
+		async: true,
+		dataType: "text",
+		success: function (result) {
+			v.java = marked(result);
+		}
+	});
+	$.ajax({
+		type: "get",
+		url: "https://www.jnnvc.com/python.md?i="+i,
+		async: true,
+		dataType: "text",
+		success: function (result) {
+			v.python = marked(result);
+		}
+	});
+	
+	$.ajax({
+		type: "get",
+		url: "https://www.jnnvc.com/qd.md?i="+i,
+		async: true,
+		dataType: "text",
+		success: function (result) {
+			v.qd = marked(result);
 		}
 	});
 </script>
