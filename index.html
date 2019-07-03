@@ -68,8 +68,8 @@
 								<el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
 							</el-col>
 						</el-row>
-					</el-tab-pane><!--
-					<el-tab-pane class="markdown-body" label="资源推荐" v-html="zy" name="second"></el-tab-pane>-->
+					</el-tab-pane>
+					
 					<el-tab-pane class="markdown-body" label="Java" v-html="javaHtml" name="java"></el-tab-pane>
 					<el-tab-pane class="markdown-body" label="Python" v-html="pythonHtml" name="python"></el-tab-pane>
 					<el-tab-pane class="markdown-body" label="前端" v-html="qdHtml" name="qd"></el-tab-pane>
@@ -94,7 +94,9 @@
 				activeName:"first",
 				tabPosition2:'right',
 				gy:"",
-				zy:"",
+		    		javaHtml:"",
+		    		pythonHtml:"",
+		    		qdHtml:"",
 				collect:[
 					{
 						"title":"百度",
@@ -166,16 +168,6 @@
         }
 	})
 	var i = Date.parse(new Date())
-	/**
-	$.ajax({
-		type: "get",
-		url: "https://www.jnnvc.com/zy.md?i="+i,
-		async: true,
-		dataType: "text",
-		success: function (result) {
-			v.zy = marked(result);
-		}
-	});*/
 	$.ajax({
 		type: "get",
 		url: "https://www.jnnvc.com/gy.md?i="+i,
@@ -191,7 +183,7 @@
 		async: true,
 		dataType: "text",
 		success: function (result) {
-			v.java = marked(result);
+			v.javaHtml = marked(result);
 		}
 	});
 	$.ajax({
@@ -200,7 +192,7 @@
 		async: true,
 		dataType: "text",
 		success: function (result) {
-			v.python = marked(result);
+			v.pythonHtml = marked(result);
 		}
 	});
 	
@@ -210,7 +202,7 @@
 		async: true,
 		dataType: "text",
 		success: function (result) {
-			v.qd = marked(result);
+			v.qdHtml = marked(result);
 		}
 	});
 </script>
