@@ -61,7 +61,7 @@
 				&nbsp;
 			</el-col>
 			<el-col :span="20" :xs="22">
-				<el-tabs v-model="activeName">
+				<el-tabs v-model="activeName" type="border-card">
 					<el-tab-pane label="网站导航" name="first">
 						<el-row :gutter="20" >
 							<el-col :lg="4" :md="6" :sm="6" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
