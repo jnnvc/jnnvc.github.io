@@ -2,6 +2,6 @@
 
 我的微信号：“ jnnvc-com ”。
 
-学生购买阿里云服务器优惠（年龄低于24岁）：[链接](https://www.aliyun.com/product/swas?source=5176.11533457&userCode=p1s8inj4&type=copy)
+年龄低于24岁购阿里云服务器特大优惠：[链接](https://www.aliyun.com/product/swas?source=5176.11533457&userCode=p1s8inj4&type=copy)
 
 
