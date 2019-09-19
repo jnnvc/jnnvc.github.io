@@ -62,6 +62,7 @@
 			</el-col>
 			<el-col :span="20" :xs="22">
 				<el-tabs v-model="activeName">
+					<el-tab-pane class="markdown-body" label="关于" v-html="gyHtml" name="gy"></el-tab-pane>
 					<el-tab-pane label="导航" name="first">
 						<el-row :gutter="20" >
 							<el-col :lg="4" :md="6" :sm="6" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
@@ -72,7 +73,7 @@
 					<el-tab-pane class="markdown-body" label="后端" v-html="hdHtml" name="hd"></el-tab-pane>
 					<el-tab-pane class="markdown-body" label="前端" v-html="qdHtml" name="qd"></el-tab-pane>
 					<el-tab-pane class="markdown-body" label="工具" v-html="gjHtml" name="gj"></el-tab-pane>
-					<el-tab-pane class="markdown-body" label="关于" v-html="gyHtml" name="gy"></el-tab-pane>
+					
 				</el-tabs>
 			</el-col>
 			<el-col :span="2" :xs="1">
@@ -90,7 +91,7 @@
         el: '#app',
         data: function () {
             return {
-				activeName:"first",
+				activeName:"gy",
 				gyHtml:"",
 		    		hdHtml:"",
 		    		qdHtml:"",
