@@ -1,7 +1,13 @@
-网站域名：[www.jnnvc.com](https://www.jnnvc.com)
+# Java QQ群：683510921
 
-我的微信号：“ jnnvc-com ”。
+[Java学习视频](https://edu.aliyun.com/roadmap/java?source=5176.11533457&userCode=p1s8inj4&type=copy)
 
-年龄低于24岁购阿里云服务器特大优惠：[链接](https://www.aliyun.com/product/swas?source=5176.11533457&userCode=p1s8inj4&type=copy)
+一个好用的Java工具包[Hutool](https://hutool.cn)中文中文注释方便阅读源码学习
 
 
+
+# Python QQ群：785669596
+
+[Python学习视频](https://edu.aliyun.com/roadmap/python?source=5176.11533457&userCode=p1s8inj4&type=copy)
+
+#### 一个从来不发文章的微信公众号“ $\color{red}{堂堂程序员}$ ”不信你试一下。
