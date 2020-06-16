@@ -1,187 +1,146 @@
-<!DOCTYPE html>
-<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<html>
 <head>
-    <title>堂堂程序员</title>
-	<meta name="Description" Content="一个静态页面而已">
-    <meta charset="utf-8">
-    <meta name="baidu-site-verification" content="YDXgQyTaZv" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="shortcut icon" href="https://avatars0.githubusercontent.com/u/38550226?s=40&u=f1f8ae9fc00eeff54377fe0617c0335a92fad690&v=4" >
-	<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-	<link href="https://cdn.bootcss.com/github-markdown-css/3.0.1/github-markdown.css" rel="stylesheet">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <style type="text/css">
-        body,html,#app{
-            margin: 0;
-            padding: 0;
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+            border:0px;
+            box-sizing:border-box;
+        }
+        li{list-style-type:none;}
+        .sendInput{
+            padding-left: 5px;
+            padding-right: 5px;
+            outline: none;
+            width:calc(100% - 100px);
+            height: 40px;
+            font-size: 24px;
+            background: aliceblue;
+        }
+        .but{
+            outline:none;
+            width: 100px;
+            float: right;
             height: 100%;
-            width: 100%;
+            background: #337ab7;
+            border-radius:0px;
+            color: #fff;
         }
-		::-webkit-scrollbar {
-			width: 15px;
-			height: 15px;
-		}
-		::-webkit-scrollbar-track,
-		::-webkit-scrollbar-thumb {
-			border-radius: 999px;
-			border: 5px solid transparent;
-		}
- 
-		::-webkit-scrollbar-track {
-			box-shadow: 1px 1px 5px rgba(0,0,0,.2) inset;
-		}
-		::-webkit-scrollbar-thumb {
-			min-height: 20px;
-			background-clip: content-box;
-			box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2) inset;
-		}
-		::-webkit-scrollbar-corner {
-			background: transparent;
-		}
-		.collect-item {
-            padding-bottom: 20px;
-        }
-        .long-title {
-			font-size: 15px;
-        }
-		.markdown-body {
-			width: 100%;
-			padding: 0px;
-    	}
-		html{
-			overflow-y:scroll
-		}
-	</style>
+    </style>
+    <script src="jquery.cookie.js"></script>
 </head>
 <body>
-    <div id="app" v-cloak>
-		<el-row>
-			<el-col :span="2" :xs="1">
-				&nbsp;
-			</el-col>
-			<el-col :span="20" :xs="22">
-				<el-tabs v-model="activeName">
-					<el-tab-pane class="markdown-body" label="广告" v-html="gyHtml" name="gy"></el-tab-pane>
-					<el-tab-pane label="导航" name="first">
-						<el-row :gutter="20" >
-							<el-col :lg="4" :md="6" :sm="6" :xs="12" v-for="item in collect" :key="item.title" class="collect-item" >
-								<el-button plain v-text="item.title" style="width:100%" @click.native="clickTitle(item.link)"></el-button>
-							</el-col>
-						</el-row>
-					</el-tab-pane>	
-				</el-tabs>
-			</el-col>
-			<el-col :span="2" :xs="1">
-				&nbsp;
-			</el-col>
-		</el-row>
-	</div>
+<div  id="app">
+    <div style="line-height: 40px; padding-left: 5px; height:40px;border-bottom: 1px solid black;width: 100%; max-width: 800px;margin: auto;border-right: 1px solid black;border-left: 1px solid black;">
+        用户名：{{username}}，在线人数：{{userCount}}
+        <button class="but" @click="setting()">设置</button>
+    </div>
+    <div id="mb" style="width: 100%; max-width: 800px;background: #fff4d5;margin: auto; height:calc(100% - 81px) ;overflow-y:scroll;overflow-x: hidden; border-right: 1px solid black;border-left: 1px solid black;">
+        <ul v-for="(item, index) in message" style="padding: 5px;width: 100%;">
+            <li style="border-bottom: 1px solid black;width: 100%;word-wrap: break-word">{{item.sendName}}：{{item.text}} <p style="color: darkgrey;text-align:right">{{item.createDate}}</p></li>
+        </ul>
+    </div>
+    <div style="width: 100%; max-width: 800px;margin: auto; height: 40px;border-top: 1px solid black;border-right: 1px solid black;border-left: 1px solid black;">
+        <input  v-model="text" type="text" class="sendInput"/>
+        <button class="but" @click="send()">发送</button>
+    </div>
+
+</div>
 </body>
-<script src="https://unpkg.com/vue/dist/vue.js"></script>
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
-<script src="https://bobcbui.github.io/lib/marked.js"></script>
-<script src="https://unpkg.com/jquery@3.4.0/dist/jquery.min.js"></script>
-<script>	
-	let v = new Vue({
+<script>
+
+    new Vue({
+
         el: '#app',
-        data: function () {
-            return {
-				activeName:"gy",
-				gyHtml:"",
-		    		hdHtml:"",
-		    		qdHtml:"",
-		    		gjHtml:"",
-				collect:[
-					{
-						"title":"百度",
-						"link":"https://www.baidu.com"
-					},
-					{
-						"title": "CSDN",
-						"link": "https://www.csdn.net/"
-					},
-					{
-						"title": "GitHub",
-						"link": "https://github.com"
-					},
-					{
-						"title": "菜鸟教程",
-						"link": "https://www.runoob.com"
-					},
-					{
-						"title": "博客园",
-						"link": "https://www.cnblogs.com/"
-					},
-					{
-						"title": "码云",
-						"link": "https://gitee.com/"
-					},{
-						"title":"慕课网",
-						"link": "https://www.imooc.com/"
-					},{
-						"title":"腾讯课堂",
-						"link": "https://ke.qq.com/"
-					},{
-						"title":"网易课堂",
-						"link": "https://study.163.com/"
-					},{
-						"title":"牛客网",
-						"link": "https://www.nowcoder.com/"
-					},{
-						"title":"掘金",
-						"link": "https://juejin.im"
-					},{
-						"title":"W3Cschool",
-						"link": "https://www.w3cschool.cn"
-					},{
-						"title":"智联招聘",
-						"link": "https://www.zhaopin.com"
-					},{
-						"title":"前程无忧",
-						"link": "https://www.51job.com"
-					},{
-						"title":"拉勾网",
-						"link": "https://www.lagou.com"
-					},{
-						"title":"中华英才",
-						"link": "https://www.chinahr.com/"
-					},{
-						"title":"Boos直聘",
-						"link": "https://www.zhipin.com"
-					},{
-						"title":"LeetCode(面试题)",
-						"link": "https://leetcode-cn.com"
-					}
-				]
+        data: {
+            path:"ws://47.106.203.60:9090/websocket",
+            socket:null,
+            message: [],
+            text:"",
+            userCount:"",
+            username:""
+        },mounted () {
+            this.username = $.cookie("username")
+            this.init()
+        },methods: {
+            init() {
+                if(typeof(WebSocket) === "undefined"){
+                    alert("您的浏览器不支持socket")
+                }else{
+                    // 实例化socket
+                    this.socket = new WebSocket(this.path)
+                    // 监听socket连接
+                    this.socket.onopen = this.open
+                    // 监听socket错误信息
+                    this.socket.onerror = this.error
+                    // 监听socket消息
+                    this.socket.onmessage = this.getMessage
+
+
+                }
+            },
+            open() {
+
+                console.log("socket连接成功")
+                if (this.username != ""){
+                    this.socket.send(JSON.stringify({username:this.username,type:"setting"}))
+                }
+            },
+            error() {
+                console.log("连接错误")
+            },
+            getMessage(msg) {
+                console.log(msg.data)
+                let parse = JSON.parse(msg.data);
+                if(parse.type == "userCount"){
+                    this.userCount = parse.text
+                }else{
+                    this.message.push(parse)
+                }
+
+
+
+                this.$nextTick(function(){
+                    let elementById = document.getElementById("mb");
+                    elementById.scrollTop = elementById.scrollHeight;
+                })
+            },
+            setting(){
+                this.username = prompt("昵称：");
+                $.cookie("username",this.username,{expires:7,path:"/"})
+                this.socket.send(JSON.stringify({username:this.username,type:"setting"}))
+            },
+            send() {
+                if (this.text == "" ){
+                    return
+                }
+                if (this.username == "" || this.username == null){
+                    alert("请设置昵称")
+                    return
+                }
+
+                if (this.text.length > 250){
+                    alert("长度不能超过250")
+                    return
+                }
+
+                this.socket.send(JSON.stringify({message:this.text,type:"message"}))
+                this.text = ""
+            },
+            close() {
+                console.log("socket连接关闭")
             }
         },
-        methods: {
-			clickTitle :function(href){
-                window.open(href, '_blank');
-			}
+        destroyed () {
+            // 销毁监听
+            this.socket.onclose = this.close
         }
-	})
-	var i = Date.parse(new Date())
-	$.ajax({
-		type: "get",
-		url: "https://bobcbui.github.io/gy.md?i="+i,
-		async: true,
-		dataType: "text",
-		success: function (result) {
-			v.gyHtml = marked(result);
-		}
-	});
-	
-</script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?bb947cf9c7f5f98f16e130331f6bdce5";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
+    })
 
+</script>
 </html>
