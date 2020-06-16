@@ -1,7 +1,6 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.11/vue.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
@@ -58,7 +57,7 @@
 
         el: '#app',
         data: {
-            path:"wss://47.106.203.60:9090/websocket",
+            path:"ws://47.106.203.60:9090/websocket",
             socket:null,
             message: [],
             text:"",
